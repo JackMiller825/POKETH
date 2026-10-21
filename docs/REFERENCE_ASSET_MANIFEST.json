@@ -1,0 +1,214 @@
+{
+  "project": "PokeETH / $POKETH",
+  "basis": "User-supplied Pokecity reference asset archive",
+  "reference_image_count": 22,
+  "replacement_image_count": 22,
+  "batch2_primary_targets": [
+    "logo-800.webp",
+    "favicon-32.png",
+    "pikachu.jpg",
+    "gold-coin-480.webp",
+    "hero-city-480.webp",
+    "night-city-480.webp",
+    "festival-480.webp",
+    "exchange-market-480.webp",
+    "to-the-moon-480.webp"
+  ],
+  "visual_asset_note": "City/festival/market and other section files use high-resolution pre-approved PokeETH art; coin/night/moon adapt generated concept-art panels at reference dimensions.",
+  "files": {
+    "banner-800.webp": {
+      "size": [
+        800,
+        267
+      ],
+      "format": "WEBP",
+      "bytes": 127628
+    },
+    "exchange-market-480.webp": {
+      "size": [
+        480,
+        270
+      ],
+      "format": "WEBP",
+      "bytes": 89028
+    },
+    "favicon-32.png": {
+      "size": [
+        32,
+        32
+      ],
+      "format": "PNG",
+      "bytes": 3051
+    },
+    "festival-480.webp": {
+      "size": [
+        480,
+        270
+      ],
+      "format": "WEBP",
+      "bytes": 89576
+    },
+    "gold-coin-480.webp": {
+      "size": [
+        480,
+        480
+      ],
+      "format": "WEBP",
+      "bytes": 71902
+    },
+    "gym-badges-480.webp": {
+      "size": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "bytes": 99506
+    },
+    "gym-badges.jpg": {
+      "size": [
+        1152,
+        864
+      ],
+      "format": "JPEG",
+      "bytes": 761033
+    },
+    "gym-badges.webp": {
+      "size": [
+        1152,
+        864
+      ],
+      "format": "WEBP",
+      "bytes": 405030
+    },
+    "hero-city-480.webp": {
+      "size": [
+        480,
+        270
+      ],
+      "format": "WEBP",
+      "bytes": 88744
+    },
+    "logo-400.jpg": {
+      "size": [
+        400,
+        400
+      ],
+      "format": "JPEG",
+      "bytes": 140641
+    },
+    "logo-800.webp": {
+      "size": [
+        800,
+        800
+      ],
+      "format": "WEBP",
+      "bytes": 236316
+    },
+    "night-city-480.webp": {
+      "size": [
+        480,
+        270
+      ],
+      "format": "WEBP",
+      "bytes": 73884
+    },
+    "pikachu.jpg": {
+      "size": [
+        420,
+        580
+      ],
+      "format": "JPEG",
+      "bytes": 239755
+    },
+    "step-hold-480.webp": {
+      "size": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "bytes": 104366
+    },
+    "step-hold.jpg": {
+      "size": [
+        1152,
+        864
+      ],
+      "format": "JPEG",
+      "bytes": 793243
+    },
+    "step-sol-480.webp": {
+      "size": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "bytes": 105510
+    },
+    "step-sol.jpg": {
+      "size": [
+        1152,
+        864
+      ],
+      "format": "JPEG",
+      "bytes": 761084
+    },
+    "step-swap-480.webp": {
+      "size": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "bytes": 104420
+    },
+    "step-swap.jpg": {
+      "size": [
+        1152,
+        864
+      ],
+      "format": "JPEG",
+      "bytes": 759612
+    },
+    "step-wallet-480.webp": {
+      "size": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "bytes": 100810
+    },
+    "to-the-moon-480.webp": {
+      "size": [
+        480,
+        640
+      ],
+      "format": "WEBP",
+      "bytes": 84944
+    },
+    "trainer-card-480.webp": {
+      "size": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "bytes": 83692
+    }
+  },
+  "roles": {
+    "banner-800.webp": "Main hero banner / PokeETH brand",
+    "trainer-card-480.webp": "Ethchu Crystal Passport",
+    "step-wallet-480.webp": "Trainer Academy: connect Ethereum wallet",
+    "step-sol-480.webp": "Trainer Academy: fund wallet with ETH",
+    "step-swap-480.webp": "Trainer Academy: swap ETH for POKETH",
+    "step-hold-480.webp": "Trainer Academy: hold / celebrate",
+    "gym-badges-480.webp": "Crystal Vault tokenomics badge case",
+    "logo-800.webp": "Main logo",
+    "favicon-32.png": "Ethchu icon",
+    "pikachu.jpg": "Wild Ethchu popup",
+    "gold-coin-480.webp": "Ethereum gold crystal coin gallery art",
+    "hero-city-480.webp": "PokeETH City daytime gallery",
+    "night-city-480.webp": "PokeETH City nighttime gallery",
+    "festival-480.webp": "Etherwild festival gallery",
+    "exchange-market-480.webp": "Crystal market / exchange gallery",
+    "to-the-moon-480.webp": "To the moon vertical poster"
+  }
+}

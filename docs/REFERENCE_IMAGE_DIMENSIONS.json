@@ -1,0 +1,134 @@
+[
+  {
+    "name": "banner-800.webp",
+    "width": 800,
+    "height": 267,
+    "matched": true
+  },
+  {
+    "name": "exchange-market-480.webp",
+    "width": 480,
+    "height": 270,
+    "matched": true
+  },
+  {
+    "name": "favicon-32.png",
+    "width": 32,
+    "height": 32,
+    "matched": true
+  },
+  {
+    "name": "festival-480.webp",
+    "width": 480,
+    "height": 270,
+    "matched": true
+  },
+  {
+    "name": "gold-coin-480.webp",
+    "width": 480,
+    "height": 480,
+    "matched": true
+  },
+  {
+    "name": "gym-badges-480.webp",
+    "width": 480,
+    "height": 360,
+    "matched": true
+  },
+  {
+    "name": "gym-badges.jpg",
+    "width": 1152,
+    "height": 864,
+    "matched": true
+  },
+  {
+    "name": "gym-badges.webp",
+    "width": 1152,
+    "height": 864,
+    "matched": true
+  },
+  {
+    "name": "hero-city-480.webp",
+    "width": 480,
+    "height": 270,
+    "matched": true
+  },
+  {
+    "name": "logo-400.jpg",
+    "width": 400,
+    "height": 400,
+    "matched": true
+  },
+  {
+    "name": "logo-800.webp",
+    "width": 800,
+    "height": 800,
+    "matched": true
+  },
+  {
+    "name": "night-city-480.webp",
+    "width": 480,
+    "height": 270,
+    "matched": true
+  },
+  {
+    "name": "pikachu.jpg",
+    "width": 420,
+    "height": 580,
+    "matched": true
+  },
+  {
+    "name": "step-hold-480.webp",
+    "width": 480,
+    "height": 360,
+    "matched": true
+  },
+  {
+    "name": "step-hold.jpg",
+    "width": 1152,
+    "height": 864,
+    "matched": true
+  },
+  {
+    "name": "step-sol-480.webp",
+    "width": 480,
+    "height": 360,
+    "matched": true
+  },
+  {
+    "name": "step-sol.jpg",
+    "width": 1152,
+    "height": 864,
+    "matched": true
+  },
+  {
+    "name": "step-swap-480.webp",
+    "width": 480,
+    "height": 360,
+    "matched": true
+  },
+  {
+    "name": "step-swap.jpg",
+    "width": 1152,
+    "height": 864,
+    "matched": true
+  },
+  {
+    "name": "step-wallet-480.webp",
+    "width": 480,
+    "height": 360,
+    "matched": true
+  },
+  {
+    "name": "to-the-moon-480.webp",
+    "width": 480,
+    "height": 640,
+    "matched": true
+  },
+  {
+    "name": "trainer-card-480.webp",
+    "width": 480,
+    "height": 360,
+    "matched": true
+  }
+]
