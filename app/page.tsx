@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { CHAPTERS, CREATURES, JOURNEY_STEPS, SITE, tokenLinks } from "./config";
 
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const PENDING_CA = "Coming soon — verify the address here after launch";
 const asset = (path: string) => `${PUBLIC_BASE}${path}`;
 const BRAND = asset("/assets/brand");
 const REF = asset("/assets/reference");
@@ -107,25 +108,25 @@ export default function Home() {
   }, [chronicleOpen]);
 
   const copyCA = useCallback(async () => {
-    if (!links.valid) { notify("Official Ethereum contract coming soon!"); return; }
-    try { await navigator.clipboard.writeText(links.contract); }
+    const text = links.valid ? links.contract : PENDING_CA;
+    try { await navigator.clipboard.writeText(text); }
     catch {
-      const input = document.createElement("textarea"); input.value = links.contract;
+      const input = document.createElement("textarea"); input.value = text;
       document.body.appendChild(input); input.select(); document.execCommand("copy"); input.remove();
     }
     setOrbOpen(true);
     if (orbTimer.current) clearTimeout(orbTimer.current);
-    orbTimer.current = setTimeout(() => setOrbOpen(false), 1600);
-    notify("Gotcha! Ethereum contract copied ✨");
-    showWild("Gotcha! $POKETH contract was collected!");
+    orbTimer.current = setTimeout(() => setOrbOpen(false), links.valid ? 1600 : 800);
+    if (links.valid) {
+      notify("Gotcha! Ethereum contract copied ✨");
+      showWild("Gotcha! $POKETH contract was collected!");
+    } else {
+      notify("Copied to clipboard ✨");
+    }
   }, [links.contract, links.valid, notify, showWild]);
 
   function orbClick() {
-    if (links.valid) { void copyCA(); return; }
-    notify("The crystal is sealed… contract coming soon!");
-    setOrbOpen(true);
-    if (orbTimer.current) clearTimeout(orbTimer.current);
-    orbTimer.current = setTimeout(() => setOrbOpen(false), 800);
+    void copyCA();
   }
 
   const openGallery = useCallback((index: number) => {
@@ -211,8 +212,8 @@ export default function Home() {
 
       <div className="ca-wrap" aria-label="Ethereum token contract"><div className="ca-box">
         <button type="button" className={`crystal-orb ${orbOpen ? "open" : ""}`} onClick={orbClick} aria-label="Tap Ethereum crystal to copy token address"><span className="orb-center">◆</span><span className="orb-spark orb-s1">✦</span><span className="orb-spark orb-s2">✧</span></button>
-        <div className="ca-main"><p className="px">ETHEREUM CONTRACT ADDRESS</p><code className={`ca ${!links.valid ? "pending" : ""}`}>{links.valid ? links.contract : "Coming soon — verify the address here after launch"}</code></div>
-        <button type="button" className="btn btn-y" onClick={() => void copyCA()} disabled={!links.valid}>{links.valid ? "Copy CA" : "Soon"}</button>
+        <div className="ca-main"><p className="px">ETHEREUM CONTRACT ADDRESS</p><code className={`ca ${!links.valid ? "pending" : ""}`}>{links.valid ? links.contract : PENDING_CA}</code></div>
+        <button type="button" className="btn btn-y" onClick={() => void copyCA()}>Copy</button>
       </div><div className="ca-links px">
         {actionLink("Uniswap", links.buy, "tiny-link", "Contract coming soon")}
         <span>·</span>{actionLink("DexScreener", links.chart, "tiny-link", "Contract coming soon")}
