@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const baseUrl = "https://jackmiller825.github.io/POKETH";
+const baseUrl = "https://poketh.site";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export const metadata: Metadata = {

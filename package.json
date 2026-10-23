@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:pages": "NEXT_PUBLIC_BASE_PATH=/POKETH next build",
+    "build:pages": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "verify:assets": "node scripts/check-assets.mjs"

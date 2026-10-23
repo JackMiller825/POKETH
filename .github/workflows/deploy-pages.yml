@@ -30,9 +30,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site for GitHub Pages
-        env:
-          NEXT_PUBLIC_BASE_PATH: /POKETH
+      - name: Build static site for the custom domain
         run: npm run build
 
       - name: Configure GitHub Pages
