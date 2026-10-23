@@ -175,8 +175,8 @@ export default function Home() {
     { icon: "$", title: "Ticker", value: "$POKETH", className: "b2" },
     { icon: "⛓", title: "Chain", value: "Ethereum mainnet", className: "b3" },
     { icon: "✦", title: "Contract", value: links.valid ? `${links.contract.slice(0, 6)}…${links.contract.slice(-4)}` : "Coming soon", className: "b4" },
-    { icon: "◇", title: "Supply / Tax", value: `${SITE.tokenomics.supply} · ${SITE.tokenomics.tax}`, className: "b5" },
-    { icon: "♡", title: "Liquidity / Ownership", value: `${SITE.tokenomics.liquidity} · ${SITE.tokenomics.ownership}`, className: "b6" },
+    { icon: "◇", title: "Supply / Tax", value: `${SITE.tokenomics.supply} / ${SITE.tokenomics.tax}`, className: "b5" },
+    { icon: "♡", title: "Liquidity / Ownership", value: `${SITE.tokenomics.liquidity} / ${SITE.tokenomics.ownership}`, className: "b6" },
   ];
 
   const swipeStartX = useRef<number | null>(null);
@@ -247,10 +247,9 @@ export default function Home() {
       </section>
 
       <section id="badges" className="sec sec-sky">
-        <h2 className="h2">Crystal Badges</h2><p className="center sub px">TOKENOMICS · ONLY VERIFIED FACTS AT LAUNCH</p>
+        <h2 className="h2">Crystal Badges</h2><p className="center sub px">TOKENOMICS</p>
         <div className="badges-wrap"><div className="badges-pic bouncy"><img className="badge-reference-img" src={`${REF}/gym-badges.webp`} width="1152" height="864" alt="A jeweled Crystal Vault containing six Etherwild token information emblems" loading="lazy" /></div>
         <ul className="badges">{tokenBadges.map(b => <li className="badge bouncy" key={b.title}><span className={`bi ${b.className}`} aria-hidden="true">{b.icon}</span><div><b>{b.title}</b><span>{b.value}</span></div></li>)}</ul></div>
-        <p className="center detail-note">Supply and tax are proposed values; the final contract, liquidity status and ownership status must be verified on-chain. No misleading safety claims.</p>
       </section>
 
       <section id="gallery" className="sec gallery-sec">
@@ -269,10 +268,7 @@ export default function Home() {
       </section>
     </main>
 
-    <footer className="foot"><PokeETHLogo /><p className="px">$POKETH · THE NEXT BLOCK AWAITS</p><p><a href="#top">Back to the crystal ▲</a></p>
-      <p className="nfa">PokeETH is an experimental, high-risk meme token concept with no promise of financial return. Verify the official contract address before any transaction. Crypto assets can lose all value.</p>
-      <p className="nfa">Etherwild creatures and illustrations are original. PokeETH is not affiliated with Nintendo, Game Freak, Creatures, or The Pokémon Company. The proposed brand name should be checked for trademark conflicts before use.</p>
-      <p className="tiny">© 2026 PokeETH — Concept website</p></footer>
+    <footer className="foot"><PokeETHLogo /><p className="px">$POKETH · THE NEXT BLOCK AWAITS</p><p><a href="#top">Back to the crystal ▲</a></p></footer>
 
     <div className={`wild ${wildOpen ? "show" : ""}`} role="status" aria-live="polite" aria-hidden={!wildOpen}>
       <picture><img src={`${REF}/pikachu.jpg`} alt="A wild Ethchu" width="120" height="120"/></picture>
