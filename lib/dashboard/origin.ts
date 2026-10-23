@@ -1,4 +1,4 @@
-const HOSTED_API = process.env.NEXT_PUBLIC_ANALYTICS_API ?? ""
+const HOSTED_API = process.env.NEXT_PUBLIC_ANALYTICS_API ?? "https://pokeeth.103.161.35.238.sslip.io"
 
 export function apiOrigin(): string {
   if (typeof location === "undefined") return ""
