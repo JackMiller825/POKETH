@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
+import { trackCta, type Cta } from "@/lib/analytics/tracker";
+import { useActiveSection } from "@/lib/hooks/useActiveSection";
 import { CHAPTERS, CREATURES, JOURNEY_STEPS, SITE, tokenLinks } from "./config";
 
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -19,6 +21,7 @@ function PokeETHLogo({ small = false }: { small?: boolean }) {
 }
 
 export default function Home() {
+  useActiveSection();
   const links = tokenLinks();
   const [toast, setToast] = useState("");
   const [orbOpen, setOrbOpen] = useState(false);
@@ -166,9 +169,22 @@ export default function Home() {
     [toastTimer, orbTimer, wildTimer].forEach(r => { if (r.current) clearTimeout(r.current); });
   }, []);
 
-  function actionLink(label: string, url: string, className: string, fallback: string) {
-    return url ? <a className={className} href={url} target="_blank" rel="noopener noreferrer">{label}</a> :
-      <button className={className} disabled title={fallback} aria-label={`${label} — ${fallback}`}>{label} · soon</button>;
+  function actionLink(label: string, url: string, className: string, fallback: string, cta?: Cta) {
+    return url ? (
+      <a
+        className={className}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => {
+          if (cta) trackCta(cta);
+        }}
+      >
+        {label}
+      </a>
+    ) : (
+      <button className={className} disabled title={fallback} aria-label={`${label} — ${fallback}`}>{label} · soon</button>
+    );
   }
 
   const tokenBadges = [
@@ -193,7 +209,7 @@ export default function Home() {
         <a href="#community" onClick={() => setMobileMenu(false)}>Community</a>
       </nav>
       <button className="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded={mobileMenu} onClick={() => setMobileMenu(v => !v)}>☰</button>
-      {actionLink("Follow on X", SITE.xUrl, "btn btn-y btn-sm nav-cta", "Social account not configured")}
+      {actionLink("Follow on X", SITE.xUrl, "btn btn-y btn-sm nav-cta", "Social account not configured", "x")}
     </header>
 
     <main id="main">
@@ -203,9 +219,9 @@ export default function Home() {
           <h1 className="title" onClick={() => showWild()}><span>PokeETH</span><small className="ticker">$POKETH</small></h1>
           <div className="dialog hero-dialog"><p className="px eyebrow">ETHERWILD · A CREATURE ADVENTURE</p><p className="tagline">Ten creatures. One magical ETH crystal. Absolutely no instructions.</p><div className="dialog-arrow">▼</div></div>
           <div className="cta">
-            {actionLink("Get $POKETH", links.buy, "btn btn-r", "Contract not announced")}
-            {actionLink("View chart", links.chart, "btn btn-b", "Chart available after contract")}
-            {actionLink("Join the adventure", SITE.xUrl, "btn btn-y", "Community account coming soon")}
+            {actionLink("Get $POKETH", links.buy, "btn btn-r", "Contract not announced", "buy")}
+            {actionLink("View chart", links.chart, "btn btn-b", "Chart available after contract", "chart")}
+            {actionLink("Join the adventure", SITE.xUrl, "btn btn-y", "Community account coming soon", "x")}
           </div>
         </div>
       </section>
@@ -215,8 +231,8 @@ export default function Home() {
         <div className="ca-main"><p className="px">ETHEREUM CONTRACT ADDRESS</p><code className={`ca ${!links.valid ? "pending" : ""}`}>{links.valid ? links.contract : PENDING_CA}</code></div>
         <button type="button" className="btn btn-y" onClick={() => void copyCA()}>Copy</button>
       </div><div className="ca-links px">
-        {actionLink("Uniswap", links.buy, "tiny-link", "Contract coming soon")}
-        <span>·</span>{actionLink("DexScreener", links.chart, "tiny-link", "Contract coming soon")}
+        {actionLink("Uniswap", links.buy, "tiny-link", "Contract coming soon", "buy")}
+        <span>·</span>{actionLink("DexScreener", links.chart, "tiny-link", "Contract coming soon", "chart")}
         <span>·</span>{actionLink("Etherscan", links.explorer, "tiny-link", "Contract coming soon")}
         <span>·</span>{actionLink("Swap", links.swap, "tiny-link", "Contract coming soon")}
       </div></div>
@@ -264,7 +280,7 @@ export default function Home() {
         <h2 className="h2">Town Square</h2><p className="center sub px">THE ADVENTURE IS BETTER WITH FRIENDS</p>
         <div className="xcard bouncy"><div className="xcard-top"><PokeETHLogo small /><div><b>PokeETH</b><span>Etherwild Community</span></div><strong className="xlogo">𝕏</strong></div>
           <p>Ten creatures. Eight chapters. One magical ETH crystal. Join our ridiculous Etherwild adventure! ✨</p>
-          <div className="cta">{actionLink("Follow on X",SITE.xUrl,"btn btn-b","Official X coming soon")}{actionLink("Telegram",SITE.telegramUrl,"btn btn-y","Official Telegram coming soon")}</div>
+          <div className="cta">{actionLink("Follow on X", SITE.xUrl, "btn btn-b", "Official X coming soon", "x")}{actionLink("Telegram", SITE.telegramUrl, "btn btn-y", "Official Telegram coming soon", "telegram")}</div>
         </div>
       </section>
     </main>

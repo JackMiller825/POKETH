@@ -8,7 +8,10 @@
     "build:pages": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "verify:assets": "node scripts/check-assets.mjs"
+    "verify:assets": "node scripts/check-assets.mjs",
+    "analytics:setup": "node --experimental-strip-types scripts/analytics-setup.ts",
+    "analytics:start": "node --experimental-strip-types server/index.ts",
+    "analytics:test": "node --experimental-strip-types --test server/app.test.ts"
   },
   "dependencies": {
     "next": "^15.5.0",

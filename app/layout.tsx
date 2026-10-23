@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PublicAnalytics } from "./components/PublicAnalytics";
 import "./globals.css";
 
 const baseUrl = "https://poketh.site";
@@ -17,5 +18,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><head><link rel="icon" href={`${basePath}/assets/reference/favicon-32.png`} sizes="32x32" type="image/png" /></head><body>{children}</body></html>;
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href={`${basePath}/assets/reference/favicon-32.png`} sizes="32x32" type="image/png" />
+      </head>
+      <body>
+        <PublicAnalytics />
+        {children}
+      </body>
+    </html>
+  );
 }
