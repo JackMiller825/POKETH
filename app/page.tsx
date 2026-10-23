@@ -232,7 +232,8 @@ export default function Home() {
         <button type="button" className="btn btn-y" onClick={() => void copyCA()}>Copy</button>
       </div><div className="ca-links px">
         {actionLink("Uniswap", links.buy, "tiny-link", "Contract coming soon", "buy")}
-        <span>·</span>{actionLink("DexScreener", links.chart, "tiny-link", "Contract coming soon", "chart")}
+        <span>·</span>{actionLink("DexTools", links.dexTools, "tiny-link", "Chart coming soon", "chart")}
+        <span>·</span>{actionLink("DexScreener", links.chart, "tiny-link", "Chart coming soon", "chart")}
         <span>·</span>{actionLink("Etherscan", links.explorer, "tiny-link", "Contract coming soon")}
         <span>·</span>{actionLink("Swap", links.swap, "tiny-link", "Contract coming soon")}
       </div></div>

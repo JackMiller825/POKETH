@@ -1,7 +1,9 @@
 /** Update this file before launch. No contract or social URL is assumed. */
 export const SITE = {
   name: "PokeETH", ticker: "$POKETH", chain: "Ethereum", coin: "ETH",
-  contractAddress: "", // must be an actual validated ERC-20 address to activate buying links
+  contractAddress: "0x07045063789c37abc60e5c38aedada61deb37f50",
+  dexScreenerUrl: "https://dexscreener.com/ethereum/0xd95b1740859d0c322fc783c6653aca0622184058",
+  dexToolsUrl: "https://www.dextools.io/app/ether/pair-explorer/0xd95b1740859d0c322fc783c6653aca0622184058",
   xUrl: "https://x.com/pokeeth2026",
   telegramUrl: "https://t.me/pokeeth",
   tokenomics: { supply: "1B", tax: "0%", liquidity: "Burnt", ownership: "Renounced" },
@@ -37,9 +39,13 @@ export const JOURNEY_STEPS = [
 export function tokenLinks() {
   const ca = SITE.contractAddress.trim();
   const valid = /^0x[a-fA-F0-9]{40}$/.test(ca);
-  return { valid, contract: ca,
+  return {
+    valid,
+    contract: ca,
     buy: valid ? `https://app.uniswap.org/swap?chain=ethereum&outputCurrency=${ca}` : "",
-    chart: valid ? `https://dexscreener.com/ethereum/${ca}` : "",
+    chart: SITE.dexScreenerUrl || (valid ? `https://dexscreener.com/ethereum/${ca}` : ""),
+    dexTools: SITE.dexToolsUrl || "",
     explorer: valid ? `https://etherscan.io/token/${ca}` : "",
-    swap: valid ? `https://app.uniswap.org/swap?chain=ethereum&outputCurrency=${ca}` : "" };
+    swap: valid ? `https://app.uniswap.org/swap?chain=ethereum&outputCurrency=${ca}` : "",
+  };
 }
