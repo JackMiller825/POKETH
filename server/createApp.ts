@@ -408,7 +408,8 @@ export function createApp(options: AppOptions): App {
       }
       const page = clampInt(url.searchParams.get('page'), 1, 100000)
       const pageSize = clampInt(url.searchParams.get('pageSize'), 25, 100)
-      const listed = await db.listVisits(filters, page, pageSize)
+      const reveal = url.searchParams.get('reveal') === '1'
+      const listed = await db.listVisits(filters, page, pageSize, reveal)
       sendJson(res, 200, { page, pageSize, total: listed.total, visits: listed.visits, timezone: 'America/New_York' })
       return
     }

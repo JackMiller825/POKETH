@@ -33,6 +33,19 @@ export function isPublicIp(ip: string): boolean {
   return true
 }
 
+function publicIpFromHeader(
+  headers: Record<string, string | string[] | undefined>,
+  name: string,
+): string | null {
+  const raw = headers[name.toLowerCase()]
+  if (typeof raw !== 'string' || !raw.trim()) return null
+  for (const part of raw.split(',')) {
+    const ip = normalizeIp(part.trim())
+    if (ip && isPublicIp(ip)) return ip
+  }
+  return null
+}
+
 /**
  * The visitor address is taken from the socket, or from one configured header
  * when the immediate peer is an explicitly trusted proxy. Forwarded headers
@@ -42,11 +55,14 @@ export function resolveVisitorIp(input: IpRequest): string | null {
   const remote = normalizeIp(input.remoteAddress)
   const peerTrusted = Boolean(remote && input.trustProxy && input.trustedProxies.includes(remote))
   if (peerTrusted) {
-    const raw = input.headers[input.trustedIpHeader.toLowerCase()]
-    if (typeof raw !== 'string' || raw.includes(',')) return null
-    const forwarded = normalizeIp(raw)
-    if (!forwarded || !isPublicIp(forwarded)) return null
-    return forwarded
+    const preferred = publicIpFromHeader(input.headers, input.trustedIpHeader)
+    if (preferred) return preferred
+    for (const name of ['x-forwarded-for', 'cf-connecting-ip', 'x-real-ip']) {
+      if (name === input.trustedIpHeader.toLowerCase()) continue
+      const ip = publicIpFromHeader(input.headers, name)
+      if (ip) return ip
+    }
+    return null
   }
   if (remote && isPublicIp(remote)) return remote
   return null

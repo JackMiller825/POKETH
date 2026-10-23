@@ -155,7 +155,17 @@ test('visitor IP ignores client JSON and untrusted forwarded headers', () => {
       trustedProxies: ['10.0.0.8'],
       trustedIpHeader: 'cf-connecting-ip',
     }),
-    null,
+    '203.0.113.9',
+  )
+  assert.equal(
+    resolveVisitorIp({
+      remoteAddress: '127.0.0.1',
+      headers: { 'x-forwarded-for': '198.51.100.4, 10.0.0.1' },
+      trustProxy: true,
+      trustedProxies: ['127.0.0.1'],
+      trustedIpHeader: 'x-forwarded-for',
+    }),
+    '198.51.100.4',
   )
   assert.equal(maskIp('203.0.113.9'), '203.0.***.***')
   assert.equal(maskIp(null), 'Unavailable')

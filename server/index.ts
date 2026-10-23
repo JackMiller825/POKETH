@@ -5,11 +5,14 @@ import { createApp } from "./createApp.ts"
 const dataDir = process.env.POKEETH_DATA_DIR ?? path.join(process.cwd(), "data")
 const port = Number(process.env.PORT ?? 4173)
 const host = process.env.HOST ?? "127.0.0.1"
-const trustProxy = process.env.TRUST_PROXY === "1"
-const trustedProxies = (process.env.TRUSTED_PROXIES ?? "")
+const trustedProxies = (process.env.TRUSTED_PROXIES ?? "127.0.0.1,::1")
   .split(",")
   .map((item) => item.trim())
   .filter(Boolean)
+const trustProxy =
+  process.env.TRUST_PROXY === "0"
+    ? false
+    : process.env.TRUST_PROXY === "1" || trustedProxies.length > 0
 const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? "https://poketh.site,https://www.poketh.site")
   .split(",")
   .map((item) => item.trim())
@@ -20,7 +23,7 @@ const app = createApp({
   nodeEnv: process.env.NODE_ENV ?? "production",
   trustProxy,
   trustedProxies,
-  trustedIpHeader: process.env.TRUSTED_IP_HEADER ?? "cf-connecting-ip",
+  trustedIpHeader: process.env.TRUSTED_IP_HEADER ?? "x-forwarded-for",
   allowedOrigins,
 })
 

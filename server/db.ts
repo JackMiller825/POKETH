@@ -470,14 +470,14 @@ export class AnalyticsDb {
     }
   }
 
-  async listVisits(filters: Filters, page: number, pageSize: number) {
+  async listVisits(filters: Filters, page: number, pageSize: number, reveal = false) {
     const where = this.where(filters)
     const total = this.db.prepare(`SELECT COUNT(*) AS n FROM visits WHERE ${where.sql}`).get(...where.args) as { n: number }
     const rows = this.db
       .prepare(`SELECT * FROM visits WHERE ${where.sql} ORDER BY started_at DESC LIMIT ? OFFSET ?`)
       .all(...where.args, pageSize, (page - 1) * pageSize) as VisitRow[]
     const places = await this.placesFor(rows)
-    return { total: Number(total.n), visits: rows.map((row) => this.present(row, false, places)) }
+    return { total: Number(total.n), visits: rows.map((row) => this.present(row, reveal, places)) }
   }
 
   async getVisit(id: string, reveal: boolean): Promise<(StoredVisit & { pageViews: { path: string; createdAt: number }[]; clicks: { kind: string; createdAt: number }[] }) | null> {

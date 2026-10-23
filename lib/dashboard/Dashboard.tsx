@@ -121,7 +121,7 @@ export default function Dashboard() {
       return
     }
     const visitResult = await api<{ visits: Visit[]; total: number; error?: string }>(
-      `/api/dashboard/analytics/visits?${queryString(nextFilters, { page: String(nextPage), pageSize: String(pageSize) })}`,
+      `/api/dashboard/analytics/visits?${queryString(nextFilters, { page: String(nextPage), pageSize: String(pageSize), reveal: '1' })}`,
     )
     if (!summaryResult.ok || !visitResult.ok) {
       setError(errorMessage(summaryResult.status, summaryResult.data, 'Visitor estimates could not be loaded.'))
@@ -243,7 +243,7 @@ export default function Dashboard() {
   }
 
   async function openDetail(id: string) {
-    const result = await api<Visit>(`/api/dashboard/analytics/visits/${id}`)
+    const result = await api<Visit>(`/api/dashboard/analytics/visits/${id}?reveal=1`)
     if (!result.ok) {
       setNotice(errorMessage(result.status, result.data, 'Visit details could not be loaded.'))
       return
