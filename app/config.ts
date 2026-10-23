@@ -2,7 +2,8 @@
 export const SITE = {
   name: "PokeETH", ticker: "$POKETH", chain: "Ethereum", coin: "ETH",
   contractAddress: "", // must be an actual validated ERC-20 address to activate buying links
-  xUrl: "", telegramUrl: "", // do not use Pokecity's social accounts
+  xUrl: "https://x.com/pokeeth2026",
+  telegramUrl: "https://t.me/pokeeth",
   tokenomics: { supply: "1B", tax: "0%", liquidity: "Burnt", ownership: "Renounced" },
 };
 export const CREATURES = [
