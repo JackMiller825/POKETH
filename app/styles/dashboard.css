@@ -1,5 +1,23 @@
+:root {
+  --ink: #24132f;
+  --ink-soft: #4e3d5c;
+  --lavender: #aa87e8;
+  --lavender-dark: #7352b5;
+  --cream: #fff5e4;
+  --cream-deep: #fff8ef;
+  --gold: #ffc84d;
+  --ocean: #21143a;
+  --ocean-mid: #30204f;
+  --navy: #30204f;
+  --royal: #7352b5;
+  --font-display: "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-body: "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Consolas", monospace;
+}
+
 body:has(.dash) {
   background: var(--ocean);
+  margin: 0;
 }
 
 .dash {
